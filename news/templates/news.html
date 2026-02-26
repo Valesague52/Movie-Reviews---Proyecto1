@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">📰 Últimas Noticias</h1>
+    
+    <div class="row">
+        {% for news in newss %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ news.headline }}</h5>
+                    <p class="card-text">{{ news.body }}</p>
+                    <p class="card-text">
+                        <small class="text-muted">{{ news.date|date:"d/m/Y" }}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                No hay noticias disponibles.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
